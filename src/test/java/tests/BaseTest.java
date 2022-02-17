@@ -18,7 +18,6 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-    String url;
 
     public void setUpLocalBrowser() {
         WebDriverManager.firefoxdriver().setup();
@@ -50,7 +49,7 @@ public class BaseTest {
         setUpLocalBrowser();
 //        setUpDockerBrowser();
         setUpSystemProperties();
-        url = System.getProperty("appUrl");
+
     }
 
 //    @AfterMethod(alwaysRun = true)
