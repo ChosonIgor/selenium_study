@@ -18,6 +18,9 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
+    String url;
+    String username;
+    String password;
 
     public void setUpLocalBrowser() {
         WebDriverManager.firefoxdriver().setup();
@@ -49,6 +52,10 @@ public class BaseTest {
         setUpLocalBrowser();
 //        setUpDockerBrowser();
         setUpSystemProperties();
+        url = System.getProperty("adminUrl");
+        username = System.getProperty("username");
+        password = System.getProperty("password");
+
 
     }
 

@@ -11,10 +11,7 @@ public class AdminMenuTests extends BaseTest {
 
     @Test
     public void testAdminMenu() {
-        String url = System.getProperty("adminUrl");
         AuthorizationPage authorizationPage = new AuthorizationPage(driver, url);
-        String username = System.getProperty("username");
-        String password = System.getProperty("password");
         AdminPage adminPage = authorizationPage.authorization(username, password);
         List<WebElement> listMenu = adminPage.getListMenu();
         for (int i = 1; i <= listMenu.size(); i++) {

@@ -17,7 +17,7 @@ public class TestingTest extends BaseTest{
     @Test
     public void checkLogin() {
         driver.get("http://localhost/litecart/admin/");
-        driver.findElement(By.cssSelector("tr input[name='username']")).sendKeys("Choson");
+        driver.findElement(By.cssSelector("tr input[name='username']")).sendKeys("admin");
         driver.findElement(By.cssSelector("tr input[name='password']")).sendKeys("1234");
         driver.findElement(By.cssSelector("tr input[type='checkbox']")).click();
         WebElement button = driver.findElement(By.cssSelector("button[type='submit']"));

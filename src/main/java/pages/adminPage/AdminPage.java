@@ -19,6 +19,7 @@ public class AdminPage extends BasePage {
     private final By locatorSectorContent = By.cssSelector("td#content");
     private final By locatorListMenu = By.cssSelector("ul#box-apps-menu > li");
     private final By locatorListSubMenu = By.cssSelector("ul#box-apps-menu > li li");
+    private final By locatorButtonCountries = By.xpath("//ul[@id='box-apps-menu']//span[text()='Countries']");
 
     public AdminPage(WebDriver driver) {
         super(driver);
@@ -40,8 +41,6 @@ public class AdminPage extends BasePage {
         }
     }
 
-
-
     public List<WebElement> getListMenu() {
         return driver.findElements(locatorListMenu);
     }
@@ -60,6 +59,9 @@ public class AdminPage extends BasePage {
         return this;
     }
 
-
+    public CountriesPage gotoCountriesPage() {
+        driver.findElement(locatorButtonCountries).click();
+        return new CountriesPage(driver);
+    }
 
 }
