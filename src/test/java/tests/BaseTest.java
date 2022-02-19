@@ -55,11 +55,9 @@ public class BaseTest {
         url = System.getProperty("adminUrl");
         username = System.getProperty("username");
         password = System.getProperty("password");
-
-
     }
 
-//    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult testResult) {
         driver.quit();
     }

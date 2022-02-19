@@ -10,33 +10,24 @@ import pages.BaseTable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountriesPage extends BaseTable {
+public class EditCountryPage extends BaseTable {
 
-    private final By locatorPageTitle = By.xpath("//h1[contains(text(), 'Countries')]");
+    private final By locatorPageTitle = By.xpath("//h1[contains(text(), 'Edit Country')]");
 
-    public CountriesPage(WebDriver driver) {
+    public EditCountryPage(WebDriver driver) {
         super(driver);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locatorPageTitle));
     }
 
-
     public List<String> getListColumnsValue(String nameColumn) {
         int index = getNameColumn().indexOf(nameColumn) + 1;
-        List<WebElement> elemsCountries = driver.findElements(By.cssSelector("tbody > tr.row > td:nth-child(" + index + ")"));
+        List<WebElement> elemsCountries = driver.findElements(By.xpath("//tbody[./tr[@class='header']]/tr[.//a]/td[" + index + "]"));
         List<String> columnsValue = new ArrayList<>();
         for (WebElement nameCountry : elemsCountries) {
             columnsValue.add(nameCountry.getText());
         }
         return columnsValue;
     }
-
-
-
-    public EditCountryPage clickOnCountryByIndexList(int index) {
-        driver.findElement(By.xpath("//tbody/tr[@class='row'][" + index + "]/td[5]/a")).click();
-        return new EditCountryPage(driver);
-    }
-
 
 
 
