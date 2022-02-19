@@ -1,9 +1,10 @@
-package tests;
+package tests.testsAdmin;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.AuthorizationPage;
 import pages.adminPage.AdminPage;
+import tests.BaseTest;
 
 import java.util.List;
 

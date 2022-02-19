@@ -4,14 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import pages.BasePage;
+import pages.adminPage.countries.CountriesPage;
+import pages.adminPage.geoZones.GeoZonesPage;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
-import static org.testng.Assert.*;
 
 public class AdminPage extends BasePage {
 
@@ -20,6 +18,7 @@ public class AdminPage extends BasePage {
     private final By locatorListMenu = By.cssSelector("ul#box-apps-menu > li");
     private final By locatorListSubMenu = By.cssSelector("ul#box-apps-menu > li li");
     private final By locatorButtonCountries = By.xpath("//ul[@id='box-apps-menu']//span[text()='Countries']");
+    private final By locatorButtonGeoZones = By.xpath("//ul[@id='box-apps-menu']//span[text()='Geo Zones']");
 
     public AdminPage(WebDriver driver) {
         super(driver);
@@ -62,6 +61,11 @@ public class AdminPage extends BasePage {
     public CountriesPage gotoCountriesPage() {
         driver.findElement(locatorButtonCountries).click();
         return new CountriesPage(driver);
+    }
+
+    public GeoZonesPage gotoGeoZonesPage() {
+        driver.findElement(locatorButtonGeoZones).click();
+        return new GeoZonesPage(driver);
     }
 
 }

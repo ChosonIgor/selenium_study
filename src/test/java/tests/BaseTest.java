@@ -18,9 +18,9 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
-    String url;
-    String username;
-    String password;
+    protected String url;
+    protected String username;
+    protected String password;
 
     public void setUpLocalBrowser() {
         WebDriverManager.firefoxdriver().setup();
