@@ -2,9 +2,9 @@ package tests.testsAdmin;
 
 import org.testng.annotations.Test;
 import pages.AuthorizationPage;
-import pages.adminPage.AdminPage;
-import pages.adminPage.countries.CountriesPage;
-import pages.adminPage.countries.EditCountryPage;
+import pages.adminPages.AdminPage;
+import pages.adminPages.countries.CountriesPage;
+import pages.adminPages.countries.EditCountryPage;
 import tests.BaseTest;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package pages.adminPage.countries;
+package pages.adminPages.countries;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

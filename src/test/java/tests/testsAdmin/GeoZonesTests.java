@@ -1,12 +1,10 @@
 package tests.testsAdmin;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.AuthorizationPage;
-import pages.adminPage.AdminPage;
-import pages.adminPage.countries.EditCountryPage;
-import pages.adminPage.geoZones.EditGeoZonesPage;
-import pages.adminPage.geoZones.GeoZonesPage;
+import pages.adminPages.AdminPage;
+import pages.adminPages.geoZones.EditGeoZonesPage;
+import pages.adminPages.geoZones.GeoZonesPage;
 import tests.BaseTest;
 
 import java.util.List;

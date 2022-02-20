@@ -1,4 +1,4 @@
-package pages.adminPage.geoZones;
+package pages.adminPages.countries;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,23 +9,27 @@ import pages.BaseTable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditGeoZonesPage extends BaseTable {
+public class EditCountryPage extends BaseTable {
 
-    private final By locatorPageTitle = By.xpath("//h1[contains(text(), 'Edit Geo Zone')]");
+    private final By locatorPageTitle = By.xpath("//h1[contains(text(), 'Edit Country')]");
 
-    public EditGeoZonesPage(WebDriver driver) {
+    public EditCountryPage(WebDriver driver) {
         super(driver);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locatorPageTitle));
     }
 
     public List<String> getListColumnsValue(String nameColumn) {
         int index = getNameColumn().indexOf(nameColumn) + 1;
-        List<WebElement> valueColumnList = driver.findElements(By.xpath("//tbody[./tr[@class='header']]/tr[.//a]/td[" + index + "]//option[@selected]"));
+        List<WebElement> elemsCountries = driver.findElements(By.xpath("//tbody[./tr[@class='header']]/tr[.//a]/td[" + index + "]"));
         List<String> columnsValue = new ArrayList<>();
-        for (WebElement cell : valueColumnList) {
-            columnsValue.add(cell.getText());
+        for (WebElement nameCountry : elemsCountries) {
+            columnsValue.add(nameCountry.getText());
         }
         return columnsValue;
     }
+
+
+
+
 
 }

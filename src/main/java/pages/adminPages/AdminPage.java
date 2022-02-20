@@ -1,12 +1,12 @@
-package pages.adminPage;
+package pages.adminPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
-import pages.adminPage.countries.CountriesPage;
-import pages.adminPage.geoZones.GeoZonesPage;
+import pages.adminPages.countries.CountriesPage;
+import pages.adminPages.geoZones.GeoZonesPage;
 
 import java.util.List;
 import java.util.NoSuchElementException;

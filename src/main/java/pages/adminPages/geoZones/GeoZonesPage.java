@@ -1,12 +1,10 @@
-package pages.adminPage.geoZones;
+package pages.adminPages.geoZones;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.BasePage;
 import pages.BaseTable;
-import pages.adminPage.countries.EditCountryPage;
 
 import java.util.ArrayList;
 import java.util.List;
