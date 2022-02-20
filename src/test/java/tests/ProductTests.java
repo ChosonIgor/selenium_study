@@ -1,30 +1,79 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import models.Product;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.storePages.MainPage;
 import pages.storePages.ProductPage;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class ProductTests extends BaseTest {
+public class ProductTests {
 
-    @Test
-    public void checkExistsStickers() {
-        String url = System.getProperty("mainPageURL");
-        MainPage mainPage = new MainPage(driver, url);
-        List<WebElement> listProduct = mainPage.getListProduct();
-        for (WebElement product:listProduct) {
-            mainPage.checkExistAStickerInProduct(product);
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected String url;
+    protected String username;
+    protected String password;
+
+    public void setUpLocalBrowser(String browser) {
+        if (browser.equals("Chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else if (browser.equals("Firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        } else {
+            WebDriverManager.iedriver().setup();
+            driver = new InternetExplorerDriver();
+        }
+        driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, 20);
+    }
+
+    public void setUpSystemProperties() {
+        try {
+            System.getProperties().load(ClassLoader.getSystemResourceAsStream("local.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @Test
+    public void tearDown() {
+        driver.quit();
+    }
+
+    @DataProvider(name = "someBrowsers")
+    private Object[][] getSomeBrowsers() {
+        return new Object[][]{{"Chrome"}, {"Firefox"}, {"IE"}};
+    }
+
+    @Test(dataProvider="someBrowsers")
+    public void checkByTask10(String browser) {
+        setUpSystemProperties();
+        setUpLocalBrowser(browser);
+        url = System.getProperty("adminUrl");
+        username = System.getProperty("username");
+        password = System.getProperty("password");
+        checkProductInMainAndProductPages();
+        tearDown();
+    }
+
     public void checkProductInMainAndProductPages() {
         String url = System.getProperty("mainPageURL");
         MainPage mainPage = new MainPage(driver, url);
@@ -116,7 +165,5 @@ public class ProductTests extends BaseTest {
             System.out.println(ae.getMessage());
         }
     }
-
-
 
 }
