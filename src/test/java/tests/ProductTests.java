@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ProductTests {
 
@@ -164,6 +165,24 @@ public class ProductTests {
         } catch (AssertionError ae) {
             System.out.println(ae.getMessage());
         }
+
+        try {
+            assertTrue(productMain.getCampaignPrice().compareTo(productMain.getRegularPrice()) < 0, "На главной странице акционная цена товара крупнее, чем обычная");
+
+        } catch (AssertionError ae) {
+            System.out.println(ae.getMessage());
+        }
+
+        try {
+            assertTrue(product.getCampaignPrice().compareTo(product.getRegularPrice()) < 0, "на странице товара акционная цена крупнее, чем обычная");
+
+        } catch (AssertionError ae) {
+            System.out.println(ae.getMessage());
+        }
+
+
+
+
     }
 
 }
