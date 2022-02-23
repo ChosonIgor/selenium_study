@@ -1,8 +1,9 @@
-package tests;
+package tests.testsStore;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.storePages.MainPage;
+import tests.BaseTest;
 
 import java.util.List;
 

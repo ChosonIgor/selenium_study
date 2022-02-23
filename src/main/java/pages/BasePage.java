@@ -21,13 +21,11 @@ public class BasePage {
     }
 
     protected void setText(WebElement element, String text) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         element.clear();
         element.sendKeys(text);
     }
 
     protected void clickElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 

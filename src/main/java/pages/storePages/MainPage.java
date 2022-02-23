@@ -9,8 +9,6 @@ import pages.BasePage;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-
 public class MainPage extends BasePage {
 
     private final By locatorLogo = By.cssSelector("div#logotype-wrapper");
@@ -18,10 +16,21 @@ public class MainPage extends BasePage {
     private final By locatorProductName = By.cssSelector("div a > div.name");
     private final By locatorProductRegularPrice = By.cssSelector("div a .regular-price");
     private final By locatorProductCampaignPrice  = By.cssSelector("div a .campaign-price");
+    private final By locatorLinkNewCustomers = By.cssSelector("div#box-account-login a");
+    private final By locatorLinkLogout = By.xpath("//div[@id='page-wrapper']//a[text()='Logout']");
+    private final By locatorFieldEmailAddress = By.cssSelector("input[name=email]");
+    private final By locatorFieldPassword = By.cssSelector("input[name=password]");
+    private final By locatorButtonLogin = By.cssSelector("button[name=login]");
+
 
     public MainPage(WebDriver driver, String url) {
         super(driver);
         driver.get(url);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locatorLogo));
+    }
+
+    public MainPage(WebDriver driver) {
+        super(driver);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locatorLogo));
     }
 
@@ -80,7 +89,33 @@ public class MainPage extends BasePage {
         return product.findElement(locatorProductCampaignPrice).getCssValue("color");
     }
 
+    public CreateAccountPage clickOnLinkNewCustomers() {
+        driver.findElement(locatorLinkNewCustomers).click();
+        return new CreateAccountPage(driver);
+    }
 
+    public MainPage clickOnLinkLogout() {
+        clickElement(driver.findElement(locatorLinkLogout));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[text()='Login']")));
+        return this;
+    }
 
+    public MainPage setFieldEmailAddress (String email) {
+        WebElement fieldEmail = driver.findElement(locatorFieldEmailAddress);
+        setText(fieldEmail, email);
+        return this;
+    }
 
+    public MainPage setFieldPassword (String password) {
+        WebElement fieldPassword = driver.findElement(locatorFieldPassword);
+        setText(fieldPassword, password);
+        return this;
+    }
+
+    public MainPage clickButtonLogin() {
+        WebElement buttonLogin = driver.findElement(locatorButtonLogin);
+        clickElement(buttonLogin);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[text()='Account']")));
+        return this;
+    }
 }
