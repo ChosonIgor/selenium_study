@@ -43,7 +43,9 @@ public class AddNewProductTests extends BaseTest {
                         " In hac habitasse platea dictumst.");
 
         addNewProductPage.gotoTabPrices();
-        addNewProductPage.tabPrices().setFieldPurchasePrice("10.50").setFieldPriceUSD("25.00");
+        addNewProductPage.tabPrices()
+                .setFieldPurchasePrice("10.50")
+                .setFieldPriceUSD("25.00");
         catalogPage = addNewProductPage.clickButtonSave();
         List<String> listProducts = catalogPage.getListColumnsValue("Name");
         Assert.assertTrue(listProducts.contains(name));

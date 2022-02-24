@@ -58,7 +58,7 @@ public class BaseTest {
         password = System.getProperty("password");
     }
 
-//    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult testResult) {
         driver.quit();
     }
