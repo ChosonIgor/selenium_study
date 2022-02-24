@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
+import pages.adminPages.catalog.CatalogPage;
 import pages.adminPages.countries.CountriesPage;
 import pages.adminPages.geoZones.GeoZonesPage;
 
@@ -19,6 +20,8 @@ public class AdminPage extends BasePage {
     private final By locatorListSubMenu = By.cssSelector("ul#box-apps-menu > li li");
     private final By locatorButtonCountries = By.xpath("//ul[@id='box-apps-menu']//span[text()='Countries']");
     private final By locatorButtonGeoZones = By.xpath("//ul[@id='box-apps-menu']//span[text()='Geo Zones']");
+    private final By locatorButtonCatalog = By.xpath("//li[@id='app-' and .//span[text()='Catalog']]");
+    private final By locatorButtonSubmenuCatalog = By.cssSelector("li#doc-catalog");
 
     public AdminPage(WebDriver driver) {
         super(driver);
@@ -67,5 +70,19 @@ public class AdminPage extends BasePage {
         driver.findElement(locatorButtonGeoZones).click();
         return new GeoZonesPage(driver);
     }
+
+    public AdminPage clickCatalogInAdminMenu() {
+        WebElement buttonCatalog = driver.findElement(locatorButtonCatalog);
+        if (!buttonCatalog.getAttribute("class").equals("selected")) clickElement(buttonCatalog);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locatorButtonSubmenuCatalog));
+        return this;
+    }
+
+    public CatalogPage gotoCatalogPage() {
+        clickCatalogInAdminMenu();
+        clickElement(driver.findElement(locatorButtonSubmenuCatalog));
+        return new CatalogPage(driver);
+    }
+
 
 }

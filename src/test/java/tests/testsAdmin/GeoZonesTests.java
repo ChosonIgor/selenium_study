@@ -1,7 +1,7 @@
 package tests.testsAdmin;
 
 import org.testng.annotations.Test;
-import pages.AuthorizationPage;
+import pages.adminPages.AuthorizationPage;
 import pages.adminPages.AdminPage;
 import pages.adminPages.geoZones.EditGeoZonesPage;
 import pages.adminPages.geoZones.GeoZonesPage;

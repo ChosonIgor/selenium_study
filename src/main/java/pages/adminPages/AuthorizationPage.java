@@ -1,9 +1,10 @@
-package pages;
+package pages.adminPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pages.BasePage;
 import pages.adminPages.AdminPage;
 
 public class AuthorizationPage extends BasePage {

@@ -2,7 +2,7 @@ package tests.testsAdmin;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import pages.AuthorizationPage;
+import pages.adminPages.AuthorizationPage;
 import pages.adminPages.AdminPage;
 import tests.BaseTest;
 
