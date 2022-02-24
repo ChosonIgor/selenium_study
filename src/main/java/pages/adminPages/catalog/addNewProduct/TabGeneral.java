@@ -82,5 +82,9 @@ public class TabGeneral extends BasePage {
         return this;
     }
 
-
+    public TabGeneral setDateValidTo(String date) {
+        WebElement fieldDate = driver.findElement(locatorFieldDateValidTo);
+        fieldDate.sendKeys(date);
+        return this;
+    }
 }

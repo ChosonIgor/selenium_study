@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
+import pages.adminPages.catalog.CatalogPage;
 
 public class AddNewProductPage extends BasePage {
 
@@ -12,6 +13,8 @@ public class AddNewProductPage extends BasePage {
     private final By locatorMenuGeneral = By.xpath("//li[./a[text()='General']]");
     private final By locatorMenuInformation = By.xpath("//li[./a[text()='Information']]");
     private final By locatorMenuPrices = By.xpath("//li[./a[text()='Prices']]");
+    private final By locatorButtonSave = By.cssSelector("button[name=save]");
+
 
     TabGeneral tabGeneral;
     TabInformation tabInformation;
@@ -52,7 +55,10 @@ public class AddNewProductPage extends BasePage {
         if (!buttonPrices.getAttribute("class").equals("active")) clickElement(buttonPrices);
     }
 
-
+    public CatalogPage clickButtonSave() {
+        clickElement(driver.findElement(locatorButtonSave));
+        return new CatalogPage(driver);
+    }
 
 
 
