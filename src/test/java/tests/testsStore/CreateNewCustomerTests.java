@@ -5,6 +5,8 @@ import pages.storePages.CreateAccountPage;
 import pages.storePages.MainPage;
 import tests.BaseTest;
 
+import static helperFunctions.HelperFunctions.getRandomEmail;
+
 public class CreateNewCustomerTests extends BaseTest {
 
     @Test
@@ -12,6 +14,7 @@ public class CreateNewCustomerTests extends BaseTest {
         String url = System.getProperty("mainPageURL");
         MainPage mainPage = new MainPage(driver, url);
         CreateAccountPage createAccountPage = mainPage.clickOnLinkNewCustomers();
+        String emial = getRandomEmail();
         mainPage = createAccountPage.setFieldFirstName("Igor")
                 .setFieldLastName("Kim")
                 .setFieldAddress1("Some address")
@@ -19,14 +22,14 @@ public class CreateNewCustomerTests extends BaseTest {
                 .setFieldCity("Moscow")
                 .choiceCountry("United States")
                 .choiceState("Utah")
-                .setFieldEmail("choson70@bk.ru")
+                .setFieldEmail(emial)
                 .setFieldPhone("+12345678901")
                 .switchOnCheckboxSubscribe()
                 .setFieldDesiredPassword("1234567")
                 .setFieldConfirmPassword("1234567")
                 .clickButtonSubmit();
         mainPage.clickOnLinkLogout();
-        mainPage.setFieldEmailAddress("choson70@bk.ru")
+        mainPage.setFieldEmailAddress(emial)
                 .setFieldPassword("1234567")
                 .clickButtonLogin();
         mainPage.clickOnLinkLogout();
