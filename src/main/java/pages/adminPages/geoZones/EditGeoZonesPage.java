@@ -27,5 +27,4 @@ public class EditGeoZonesPage extends BaseTable {
         }
         return columnsValue;
     }
-
 }

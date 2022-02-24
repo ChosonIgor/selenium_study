@@ -35,7 +35,4 @@ public class CatalogPage extends BaseTable {
         }
         return columnsValue;
     }
-
-
-
 }

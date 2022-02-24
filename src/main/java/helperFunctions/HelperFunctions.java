@@ -14,8 +14,6 @@ public class HelperFunctions {
     public static String getNameProduct() {
         Date dateNow = new Date();
         SimpleDateFormat formater = new SimpleDateFormat("ddMMyyHHmm");
-        return  "Tager" + formater.format(dateNow);
-
+        return  "Tiger" + formater.format(dateNow);
     }
-
 }
