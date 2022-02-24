@@ -10,7 +10,7 @@ import static helperFunctions.HelperFunctions.getRandomEmail;
 public class CreateNewCustomerTests extends BaseTest {
 
     @Test
-    public void checkExistsStickers() {
+    public void createNewCustomerTests() {
         String url = System.getProperty("mainPageURL");
         MainPage mainPage = new MainPage(driver, url);
         CreateAccountPage createAccountPage = mainPage.clickOnLinkNewCustomers();
