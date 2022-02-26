@@ -21,7 +21,8 @@ public class MainPage extends BasePage {
     private final By locatorFieldEmailAddress = By.cssSelector("input[name=email]");
     private final By locatorFieldPassword = By.cssSelector("input[name=password]");
     private final By locatorButtonLogin = By.cssSelector("button[name=login]");
-
+    private final By locatorFirstProduct = By.cssSelector("li.product");
+    private final By locatorLinkCheckout = By.xpath("//a[text()='Checkout »']");
 
     public MainPage(WebDriver driver, String url) {
         super(driver);
@@ -117,5 +118,15 @@ public class MainPage extends BasePage {
         clickElement(buttonLogin);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[text()='Account']")));
         return this;
+    }
+
+    public ProductPage clickFirstProduct() {
+        clickElement(driver.findElement(locatorFirstProduct));
+        return new ProductPage(driver);
+    }
+
+    public CheckoutPage gotoCheckoutPage() {
+    clickElement(driver.findElement(locatorLinkCheckout));
+    return new CheckoutPage(driver);
     }
 }
