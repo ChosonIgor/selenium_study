@@ -1,8 +1,10 @@
 package tests.testsAdmin;
 
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.adminPages.AuthorizationPage;
 import pages.adminPages.AdminPage;
+import pages.adminPages.countries.AddNewCountryPage;
 import pages.adminPages.countries.CountriesPage;
 import pages.adminPages.countries.EditCountryPage;
 import tests.BaseTest;
@@ -33,6 +35,18 @@ public class CountriesPageTests extends BaseTest {
                 editCountryPage.checkSortedList(zones);
                 countriesPage = adminPage.gotoCountriesPage();
             }
+        }
+    }
+
+    @Test
+    public void checkOpenNewWindows() {
+        AuthorizationPage authorizationPage = new AuthorizationPage(driver, url);
+        AdminPage adminPage = authorizationPage.authorization(username, password);
+        CountriesPage countriesPage = adminPage.gotoCountriesPage();
+        AddNewCountryPage addNewCountryPage = countriesPage.clickButtonAddNewCountry();
+        List<WebElement> listLinksNewWindow = addNewCountryPage.getListLinksNewWindow();
+        for (WebElement linkNewWindow : listLinksNewWindow) {
+            addNewCountryPage.openAndCloseNewWindows(linkNewWindow);
         }
     }
 }

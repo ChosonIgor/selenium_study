@@ -15,7 +15,6 @@ public class CheckoutPage extends BasePage {
     private final By locatorTableOrderSummary = By.cssSelector("div#box-checkout-summary tbody");
     private final By locatorSomeValueInTableOrderSummary = By.cssSelector("table.dataTable.rounded-corners td");
 
-
     public CheckoutPage(WebDriver driver) {
         super(driver);
         wait.until(or(presenceOfElementLocated(locatorTableOrderSummary), presenceOfElementLocated(locatorTextNoItems)));
@@ -29,10 +28,6 @@ public class CheckoutPage extends BasePage {
             wait.until(or(presenceOfElementLocated(locatorTableOrderSummary), presenceOfElementLocated(locatorTextNoItems)));
         }
     }
-
-
-
-
 
 
 }

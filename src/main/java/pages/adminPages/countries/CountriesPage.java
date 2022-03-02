@@ -12,6 +12,8 @@ import java.util.List;
 public class CountriesPage extends BaseTable {
 
     private final By locatorPageTitle = By.xpath("//h1[contains(text(), 'Countries')]");
+    private final By locatorButtonAddNewCountry = By.cssSelector("a.button");
+
 
     public CountriesPage(WebDriver driver) {
         super(driver);
@@ -32,4 +34,13 @@ public class CountriesPage extends BaseTable {
         driver.findElement(By.xpath("//tbody/tr[@class='row'][" + index + "]/td[5]/a")).click();
         return new EditCountryPage(driver);
     }
+
+    public AddNewCountryPage clickButtonAddNewCountry() {
+        driver.findElement(locatorButtonAddNewCountry).click();
+        return new AddNewCountryPage(driver);
+    }
+
+
+
+
 }
