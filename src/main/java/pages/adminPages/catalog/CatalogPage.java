@@ -21,6 +21,12 @@ public class CatalogPage extends BaseTable {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locatorPageTitle));
     }
 
+    public CatalogPage(WebDriver driver, String url) {
+        super(driver);
+        driver.get(url);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locatorPageTitle));
+    }
+
     public AddNewProductPage gotoAddNewProductPage() {
         clickElement(driver.findElement(locatorButtonAddNewProduct));
         return new AddNewProductPage(driver);
@@ -35,4 +41,23 @@ public class CatalogPage extends BaseTable {
         }
         return columnsValue;
     }
+
+    public List<String> getListProduct(String nameColumn) {
+        int index = getNameColumn().indexOf(nameColumn) + 1;
+        List<WebElement> valueColumnList = driver.findElements(By.xpath("//tbody[./tr[@class='header']]/tr/td[" + index + "]" +
+                "[./a[contains(@href, 'app=catalog&doc=edit_product&category_id')]]"));
+        List<String> columnsValue = new ArrayList<>();
+        for (WebElement cell : valueColumnList) {
+            columnsValue.add(cell.getText());
+        }
+        return columnsValue;
+    }
+
+    public EditProductPage gotoEditProductPage(String nameProduct) {
+        driver.findElement(By.xpath("//tbody[./tr[@class='header']]//a[text()='" + nameProduct + "']")).click();
+        return new EditProductPage(driver);
+    }
+
+
+
 }

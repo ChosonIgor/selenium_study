@@ -3,17 +3,12 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URI;
 
 public class BaseTest {
 
@@ -24,20 +19,10 @@ public class BaseTest {
     protected String password;
 
     public void setUpLocalBrowser() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 20);
-    }
-
-    public void setUpDockerBrowser() {
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        String url = "http://localhost:4444/wd/hub";
-        try {
-            driver = new RemoteWebDriver(URI.create(url).toURL(), capabilities);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void setUpSystemProperties() {
@@ -51,7 +36,6 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void init() {
         setUpLocalBrowser();
-//        setUpDockerBrowser();
         setUpSystemProperties();
         url = System.getProperty("adminUrl");
         username = System.getProperty("username");

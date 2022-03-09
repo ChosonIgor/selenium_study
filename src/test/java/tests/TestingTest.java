@@ -25,4 +25,10 @@ public class TestingTest extends BaseTest{
         wait.until(ExpectedConditions.invisibilityOf(button));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='notice errors']")));
     }
+
+
+
+
+
+
 }

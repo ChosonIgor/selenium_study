@@ -8,9 +8,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.util.Map;
 
 public class TestsDiffBrowsers {
 
@@ -64,6 +70,26 @@ public class TestsDiffBrowsers {
         driver.quit();
     }
 
-
+    @Test
+    public void testDocker() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", "firefox");
+        capabilities.setCapability("browserVersion", "96.0");
+        capabilities.setCapability("enableVNC", true);
+        RemoteWebDriver driver = null;
+        try {
+            driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), capabilities);
+            driver.get("https://www.yandex.ru");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Найти']")));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.quit();
+    }
 
 }
